@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Çelik İnşaat - İstanbul ve çevresinde alçı, boya, badana, sıva ve dekorasyon uygulamaları.">
+  <title>Çelik İnşaat | Alçı • Boya • Badana • Sıva</title>
+  <style>
+    :root{
+      --dark:#111827; --dark2:#1f2937; --gold:#d9a441; --cream:#f7f4ed;
+      --white:#fff; --muted:#6b7280; --line:#e5e7eb; --green:#25d366;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;color:var(--dark);background:#fff;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1140px,92%);margin:auto}
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(17,24,39,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800;font-size:21px}
+    .logo-mark{width:42px;height:42px;border:2px solid var(--gold);display:grid;place-items:center;transform:rotate(45deg);border-radius:8px}
+    .logo-mark span{transform:rotate(-45deg);color:var(--gold)}
+    nav ul{display:flex;list-style:none;gap:28px;color:#e5e7eb;font-size:14px}
+    nav a:hover{color:var(--gold)}
+    .nav-btn{background:var(--gold);color:#111827;padding:11px 18px;border-radius:8px;font-weight:700}
+    .hero{min-height:760px;padding-top:76px;display:flex;align-items:center;background:
+      linear-gradient(90deg,rgba(17,24,39,.94) 0%,rgba(17,24,39,.76) 48%,rgba(17,24,39,.45) 100%),
+      linear-gradient(135deg,#374151,#9ca3af);position:relative;overflow:hidden}
+    .hero:after{content:"";position:absolute;inset:auto -10% -180px;height:360px;background:#fff;transform:rotate(-5deg)}
+    .hero-content{position:relative;z-index:2;color:#fff;max-width:720px}
+    .eyebrow{display:inline-block;color:var(--gold);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:13px;margin-bottom:18px}
+    h1{font-size:clamp(42px,6vw,76px);line-height:1.02;margin-bottom:22px}
+    h1 em{font-style:normal;color:var(--gold)}
+    .hero p{font-size:19px;color:#e5e7eb;max-width:650px;margin-bottom:32px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:9px;font-weight:800;transition:.2s}
+    .btn-primary{background:var(--gold);color:#111827}
+    .btn-outline{border:1px solid rgba(255,255,255,.45);color:#fff}
+    .btn:hover{transform:translateY(-2px)}
+    .stats{position:relative;z-index:3;margin-top:-85px}
+    .stats-grid{background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.12);display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden}
+    .stat{padding:25px;text-align:center;border-right:1px solid var(--line)}
+    .stat:last-child{border:0}.stat strong{display:block;font-size:27px}.stat span{color:var(--muted);font-size:14px}
+    section{padding:95px 0}.section-head{text-align:center;max-width:720px;margin:0 auto 48px}
+    .section-head .eyebrow{color:#9b701e;margin-bottom:10px}
+    h2{font-size:clamp(31px,4vw,46px);line-height:1.1;margin-bottom:14px}
+    .section-head p{color:var(--muted)}
+    .services{background:var(--cream)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;box-shadow:0 8px 25px rgba(17,24,39,.05);transition:.25s}
+    .card:hover{transform:translateY(-5px);box-shadow:0 16px 35px rgba(17,24,39,.1)}
+    .icon{width:52px;height:52px;border-radius:12px;background:#111827;color:var(--gold);display:grid;place-items:center;font-size:25px;margin-bottom:20px}
+    .card h3{font-size:21px;margin-bottom:9px}.card p{color:var(--muted);font-size:15px}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .about-box{background:#111827;color:#fff;border-radius:22px;padding:42px;position:relative;overflow:hidden}
+    .about-box:before{content:"Ç";position:absolute;right:-15px;top:-70px;font-size:280px;color:rgba(217,164,65,.08);font-weight:900}
+    .about-box h3{font-size:30px;margin-bottom:16px}.about-box p{color:#d1d5db}
+    .checklist{list-style:none;margin-top:24px;display:grid;gap:12px}.checklist li:before{content:"✓";color:var(--gold);font-weight:900;margin-right:10px}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.step{padding:26px;border-top:3px solid var(--gold);background:#f9fafb}.step b{font-size:13px;color:#9b701e}.step h3{margin:8px 0}.step p{font-size:14px;color:var(--muted)}
+    .gallery{background:#111827;color:#fff}.gallery .section-head p{color:#9ca3af}
+    .gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:220px;gap:12px}
+    .tile{border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#374151,#9ca3af);display:flex;align-items:flex-end;padding:22px;position:relative}
+    .tile:first-child{grid-row:span 2}.tile:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.75))}
+    .tile span{position:relative;z-index:1;font-weight:800;font-size:18px}
+    .social-note{margin-top:24px;text-align:center;color:#9ca3af;font-size:14px}
+    .contact{background:var(--cream)}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+    .contact-panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px}
+    .contact-item{display:flex;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+    .contact-item:last-child{border:0}.contact-icon{font-size:24px;width:42px}
+    .contact-item small{display:block;color:var(--muted)}.contact-item a{font-weight:700}
+    .cta{background:linear-gradient(135deg,#111827,#293548);color:#fff;text-align:center;padding:70px 20px}
+    .cta p{color:#d1d5db;margin:12px auto 25px;max-width:650px}
+    footer{background:#0b1019;color:#9ca3af;padding:25px 0;font-size:13px}
+    .footer-flex{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .floating{position:fixed;right:20px;bottom:20px;z-index:1100;display:flex;flex-direction:column;gap:10px}
+    .float{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:23px;box-shadow:0 8px 22px rgba(0,0,0,.22)}
+    .wa{background:var(--green)}.call{background:#111827}
+    @media(max-width:850px){
+      nav ul{display:none}.nav-btn{padding:9px 13px}.hero{min-height:690px}
+      .stats-grid,.cards,.about,.process,.contact-grid{grid-template-columns:1fr}
+      .stat{border-right:0;border-bottom:1px solid var(--line)}
+      .about{gap:25px}.gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.tile:first-child{grid-row:span 1}
+      section{padding:70px 0}.footer-flex{flex-direction:column;text-align:center}
+    }
+    @media(max-width:520px){.logo{font-size:17px}.logo-mark{width:36px;height:36px}.nav-btn{font-size:12px}.hero p{font-size:16px}.gallery-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a href="#anasayfa" class="logo"><div class="logo-mark"><span>Ç</span></div> ÇELİK İNŞAAT</a>
+    <nav><ul><li><a href="#hizmetler">Hizmetler</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#calismalar">Çalışmalarımız</a></li><li><a href="#iletisim">İletişim</a></li></ul></nav>
+    <a class="nav-btn" href="tel:+905372245831">Hemen Ara</a>
+  </div>
+</header>
+
+<main id="anasayfa">
+<section class="hero">
+  <div class="container hero-content">
+    <span class="eyebrow">İstanbul & Çevresi</span>
+    <h1>Duvarlara <em>özen</em>, mekanlara yeni bir hayat.</h1>
+    <p>Çelik İnşaat; alçı, boya, badana, sıva ve dekorasyon uygulamalarında temiz işçilik, düzgün yüzey ve zamanında teslim anlayışıyla hizmet verir.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://wa.me/905372245831?text=Merhaba%20%C3%87elik%20%C4%B0n%C5%9Faat%2C%20i%C5%9F%20i%C3%A7in%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp'tan Teklif Al</a>
+      <a class="btn btn-outline" href="tel:+905372245831">☎ 0537 224 58 31</a>
+    </div>
+  </div>
+</section>
+
+<div class="container stats">
+  <div class="stats-grid">
+    <div class="stat"><strong>İstanbul</strong><span>ve çevre ilçelere hizmet</span></div>
+    <div class="stat"><strong>Temiz İşçilik</strong><span>detaylara önem veren uygulama</span></div>
+    <div class="stat"><strong>Ücretsiz Görüşme</strong><span>işinizi birlikte planlayalım</span></div>
+  </div>
+</div>
+
+<section id="hizmetler" class="services">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">Hizmetlerimiz</span><h2>İşinizi baştan sona özenle yapıyoruz.</h2><p>İhtiyacınıza göre uygulama öncesi keşif, yüzey hazırlığı, uygulama ve son temizlik aşamalarını planlıyoruz.</p></div>
+    <div class="cards">
+      <article class="card"><div class="icon">▱</div><h3>Alçı & Saten Alçı</h3><p>Duvar ve tavanların düzgün, pürüzsüz ve boyaya hazır hale getirilmesi. Çatlak, bozukluk ve yüzey problemlerine uygun hazırlık.</p></article>
+      <article class="card"><div class="icon">◩</div><h3>Boya & Badana</h3><p>Ev, ofis, iş yeri ve diğer yaşam alanlarında renk yenileme, tavan boyama ve detaylı boya uygulamaları.</p></article>
+      <article class="card"><div class="icon">⌁</div><h3>Sıva İşleri</h3><p>İç ve uygun dış yüzeylerde kaba sıva, ince sıva ve yüzey düzeltme uygulamaları ile sağlam bir alt zemin hazırlanması.</p></article>
+      <article class="card"><div class="icon">✦</div><h3>Dekoratif Uygulamalar</h3><p>Duvarlara farklı bir karakter kazandırmak isteyenler için dekoratif yüzey ve boya çözümleri.</p></article>
+      <article class="card"><div class="icon">▥</div><h3>Tadilat & Yenileme</h3><p>Yıpranmış veya eskiyen mekanlarda boya öncesi onarım, yüzey yenileme ve genel uygulama desteği.</p></article>
+      <article class="card"><div class="icon">✓</div><h3>Son Kontrol & Temizlik</h3><p>Uygulama sonunda detaylı kontrol ve mümkün olduğunca temiz teslim prensibiyle işimizi tamamlıyoruz.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="hakkimizda">
+  <div class="container about">
+    <div>
+      <span class="eyebrow">Çelik İnşaat</span>
+      <h2>Sağlam yüzey, temiz işçilik, düzgün sonuç.</h2>
+      <p>Bir mekanın görünümünü değiştiren en önemli detaylardan biri doğru yüzey hazırlığıdır. Çelik İnşaat olarak alçıdan sıvaya, astardan boyaya kadar uygulamanın her aşamasına dikkat ediyoruz.</p>
+      <ul class="checklist">
+        <li>İş öncesi ihtiyaçların belirlenmesi</li>
+        <li>Uygun malzeme ve uygulama yönteminin seçilmesi</li>
+        <li>Yüzey hazırlığı ve detaylı işçilik</li>
+        <li>Zamanında ve düzenli teslim hedefi</li>
+        <li>İstanbul ve çevre ilçelerde hizmet</li>
+      </ul>
+    </div>
+    <div class="about-box"><h3>Mekanınızı yenilemeye hazır mısınız?</h3><p>Yapılacak işi, alanın durumunu ve beklentinizi konuşalım. Fotoğraf göndererek ön bilgi ve fiyat görüşmesi de yapabilirsiniz.</p><div class="actions" style="margin-top:24px"><a class="btn btn-primary" href="https://wa.me/905372245831?text=Merhaba%2C%20%C3%87elik%20%C4%B0n%C5%9Faat%20i%C3%A7in%20i%C5%9Fim%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp'tan Yaz</a></div></div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">Çalışma Sürecimiz</span><h2>İşiniz nasıl ilerliyor?</h2></div>
+    <div class="process">
+      <div class="step"><b>01</b><h3>Görüşme</h3><p>İhtiyacınızı, alanı ve beklentinizi öğreniyoruz.</p></div>
+      <div class="step"><b>02</b><h3>Keşif & Planlama</h3><p>Yapılacak işlemleri ve gerekli hazırlıkları belirliyoruz.</p></div>
+      <div class="step"><b>03</b><h3>Uygulama</h3><p>Alçı, sıva, astar, boya ve diğer işleri planlı şekilde yapıyoruz.</p></div>
+      <div class="step"><b>04</b><h3>Kontrol & Teslim</h3><p>Son kontrolleri yapıp işi düzenli şekilde teslim ediyoruz.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="calismalar" class="gallery">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">Önceki İşlerimiz</span><h2>Yaptığımız işleri videolarda görün.</h2><p>Gerçek uygulamalarımızı ve iş süreçlerimizi sosyal medya hesaplarımızdan takip edebilirsiniz.</p></div>
+    <div class="gallery-grid">
+      <div class="tile"><span>Alçı & Yüzey Hazırlığı</span></div>
+      <div class="tile"><span>Boya & Badana</span></div>
+      <div class="tile"><span>Sıva Uygulamaları</span></div>
+      <div class="tile"><span>Dekoratif Çalışmalar</span></div>
+      <div class="tile"><span>Öncesi / Sonrası</span></div>
+    </div>
+    <div class="actions" style="justify-content:center;margin-top:28px">
+      <!-- Aşağıdaki iki bağlantıyı kendi TikTok ve YouTube profil adreslerinizle değiştirin. -->
+      <a class="btn btn-primary" href="https://www.tiktok.com/" target="_blank">♪ TikTok'ta Çalışmalarımız</a>
+      <a class="btn btn-outline" href="https://www.youtube.com/" target="_blank">▶ YouTube Videolarımız</a>
+    </div>
+    <p class="social-note">Not: TikTok ve YouTube butonları şu anda ana sayfalara yönlendirilir. Profil adreslerinizi gönderirseniz bağlantıları doğrudan hesaplarınıza göre güncelleyebilirsiniz.</p>
+  </div>
+</section>
+
+<section id="iletisim" class="contact">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">İletişim</span><h2>İşiniz için bize ulaşın.</h2><p>Telefon, WhatsApp veya e-posta üzerinden bize ulaşabilirsiniz.</p></div>
+    <div class="contact-grid">
+      <div class="contact-panel">
+        <div class="contact-item"><div class="contact-icon">☎</div><div><small>Telefon</small><a href="tel:+905372245831">0537 224 58 31</a></div></div>
+        <div class="contact-item"><div class="contact-icon">◉</div><div><small>WhatsApp</small><a href="https://wa.me/905372245831" target="_blank">WhatsApp üzerinden yazın</a></div></div>
+        <div class="contact-item"><div class="contact-icon">✉</div><div><small>E-posta</small><a href="mailto:selam.celik7272@gmail.com">selam.celik7272@gmail.com</a></div></div>
+        <div class="contact-item"><div class="contact-icon">⌖</div><div><small>Hizmet Bölgesi</small><strong>İstanbul ve çevresi</strong></div></div>
+      </div>
+      <div class="contact-panel">
+        <h3 style="font-size:26px;margin-bottom:10px">Teklif almak ister misiniz?</h3>
+        <p style="color:var(--muted);margin-bottom:22px">Yapılacak işin fotoğraflarını WhatsApp üzerinden gönderin. Alçı, boya, badana veya sıva ihtiyacınızı konuşalım.</p>
+        <a class="btn btn-primary" style="width:100%" href="https://wa.me/905372245831?text=Merhaba%20%C3%87elik%20%C4%B0n%C5%9Faat%2C%20i%C5%9Fim%20i%C3%A7in%20teklif%20almak%20istiyorum." target="_blank">WhatsApp'tan Teklif İste</a>
+        <a class="btn" style="width:100%;margin-top:10px;border:1px solid var(--line)" href="mailto:selam.celik7272@gmail.com?subject=%C3%87elik%20%C4%B0n%C5%9Faat%20Teklif%20Talebi">E-posta Gönder</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container"><h2>Duvarlarınızı yenilemenin zamanı geldi.</h2><p>Çelik İnşaat ile alçı, boya, badana ve sıva işleriniz için görüşelim.</p><a class="btn btn-primary" href="tel:+905372245831">0537 224 58 31 — Hemen Ara</a></div>
+</section>
+</main>
+
+<div class="floating">
+  <a class="float wa" href="https://wa.me/905372245831" target="_blank" aria-label="WhatsApp">◉</a>
+  <a class="float call" href="tel:+905372245831" aria-label="Telefon">☎</a>
+</div>
+
+<footer><div class="container footer-flex"><div>© 2026 Çelik İnşaat — Tüm hakları saklıdır.</div><div>Alçı • Boya • Badana • Sıva | İstanbul & Çevresi</div></div></footer>
+</body>
+</html>
